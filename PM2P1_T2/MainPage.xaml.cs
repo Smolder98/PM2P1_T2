@@ -25,13 +25,21 @@ namespace PM2P1_T2
                 string.IsNullOrEmpty(Edad.Text) ||
                 string.IsNullOrEmpty(Correo.Text))
             {
-                mensaje("Aviso", "De de llenar todos los campos");
+                mensaje("Aviso", "Debe llenar todos los campos");
                 return;
             }
 
-            if (int.Parse(Edad.Text) < 0)
+            try
             {
-                mensaje("Aviso", "La edad debe se mayor a cero");
+                if (int.Parse(Edad.Text) < 0)
+                {
+                    mensaje("Aviso", "La edad debe se mayor a cero");
+                    return;
+                }
+
+            }
+            catch (Exception ex) { 
+                mensaje("Aviso", ex.Message);
                 return;
             }
 
